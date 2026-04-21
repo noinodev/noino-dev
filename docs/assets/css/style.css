@@ -47,11 +47,10 @@ body {
 }
 
 .site-header nav {
-  max-width: var(--max-width);
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 52px;
 }
 
@@ -61,7 +60,6 @@ body {
   font-size: 0.85rem;
   color: var(--accent);
   text-decoration: none;
-  text-transform: uppercase;
 }
 
 .nav-links {
@@ -79,6 +77,17 @@ body {
 
 .nav-links a:hover {
   color: var(--text);
+}
+
+.nav-icons a {
+  display: flex;
+  align-items: center;
+  opacity: 0.5;
+  transition: opacity 0.15s;
+}
+
+.nav-icons a:hover {
+  opacity: 1;
 }
 
 /* ── MAIN CONTENT ── */
