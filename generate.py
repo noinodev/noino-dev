@@ -34,7 +34,7 @@ CONTENT_TREES = [
 # ── PATHS ─────────────────────────────────────────────────────────────────────
 
 ROOT     = Path(__file__).parent
-WEB      = ROOT / "web"
+WEB      = ROOT / "docs"
 TEMPLATE = ROOT / "template.html"
 
 # ── HELPERS ───────────────────────────────────────────────────────────────────
