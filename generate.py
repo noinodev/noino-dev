@@ -29,6 +29,13 @@ CONTENT_TREES = [
         "back_label": "projects",
         "back_href":  "/projects/",
     },
+    {
+        "name":       "demos",
+        "source":     "demos",
+        "web":        "demos",
+        "back_label": "demos",
+        "back_href":  "/",
+    },
 ]
 
 # ── PATHS ─────────────────────────────────────────────────────────────────────
