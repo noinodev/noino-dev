@@ -7,5 +7,5 @@ description: sponza webgl thing
 ---
 raylib modified for power of two texture repeat. the library forces it off by default.
 
-<iframe src="/assets/webgl/sponza/wasm.html" style="width:800px; height:600px;"></iframe>
+<iframe src="/webgl/sponza/" style="width:100vw; height:100vh;"></iframe>
 
