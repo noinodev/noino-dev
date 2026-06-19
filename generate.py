@@ -218,26 +218,37 @@ def generate_listing(items, template, output_path, title, tagline, description, 
 
 # ── PAGES ─────────────────────────────────────────────────────────────────────
 
+import re
+
 def generate_pages(trees_data, template):
     """
     Renders pages/*.html into web/page-name/index.html.
-    Any {{TREE_NAME}} placeholder in a page is replaced with that tree's listing.
-    e.g. {{POSTS}}, {{PROJECTS}}, {{PUBLICATIONS}}
+    Any {{TREE_NAME}} placeholder is replaced with that tree's full listing.
+    Any {{TREE_NAME,N}} placeholder is replaced with only the first N items.
+    e.g. {{POSTS}}, {{PROJECTS,5}}, {{PUBLICATIONS,3}}
     """
-
-
     pages_dir = ROOT / "pages"
     if not pages_dir.exists():
         return
 
-    placeholders = {
-        tree["name"].upper(): build_list(items, f"/{tree['web']}")
-        for tree, items in zip(CONTENT_TREES, [trees_data[t["name"]] for t in CONTENT_TREES])
+    # Pre-build full item lists per tree for reuse
+    tree_items = {
+        tree["name"].upper(): (tree, trees_data[tree["name"]])
+        for tree in CONTENT_TREES
     }
+
+    def replace_placeholder(match):
+        name  = match.group(1).upper()
+        limit = int(match.group(2)) if match.group(2) else None
+        if name not in tree_items:
+            return match.group(0)  # leave unknown placeholders untouched
+        tree, items = tree_items[name]
+        sliced = items[:limit] if limit is not None else items
+        return build_list(sliced, f"/{tree['web']}")
 
     for f in pages_dir.glob("*.html"):
         name    = f.stem
-        content = render(f.read_text(), placeholders)
+        content = re.sub(r"\{\{([A-Z_]+)(?:,(\d+))?\}\}", replace_placeholder, f.read_text())
         html    = render(template, {
             "TITLE":       name,
             "SITE_NAME":   SITE_NAME,
@@ -245,11 +256,9 @@ def generate_pages(trees_data, template):
             "THUMBNAIL":   "",
             "CONTENT":     content,
         })
-        #write(WEB / name / "index.html", html)
         out_path = WEB / "index.html" if name == "index" else WEB / name / "index.html"
         write(out_path, html)
         print(f"  ✓ {'index.html' if name == 'index' else name + '/'}")
-        print(f"  ✓ {name}/")
 
 # ── MAIN ──────────────────────────────────────────────────────────────────────
 

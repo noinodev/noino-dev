@@ -1,14 +1,14 @@
 :root {
-  --bg: #0d0d0d;
-  --bg-2: #141414;
-  --bg-3: #1a1a1a;
-  --border: #222;
-  --text: #d4cfc9;
-  --text-dim: #6b6560;
-  --text-dimmer: #3a3835;
-  --accent: #c8a97e;
-  --accent-dim: #7a6548;
-  --code-bg: #111;
+  --bg: #181425;
+  --bg-2: #262b44;
+  --bg-3: #262b44;
+  --border: #262b44;
+  --text: #c0cbdc;
+  --text-dim: #c0cbdc;
+  --text-dimmer: #8b9bb4;
+  --accent: #ffffff;
+  --accent-dim: #c0cbdc;
+  --code-bg: #262b44;
   --font-mono: monospace;
   --font-serif: sans-serif;
   --max-width: 680px;
@@ -64,7 +64,7 @@ body {
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: .5rem;
 }
 
 .nav-links a {
@@ -199,10 +199,9 @@ body {
 .post-tag {
   font-size: 0.7rem;
   color: var(--accent-dim);
-  border: 1px solid var(--accent-dim);
   padding: 0.1em 0.5em;
   border-radius: 2px;
-  text-transform: uppercase;
+  
 }
 
 /* ── POST PAGE ── */
@@ -232,6 +231,8 @@ body {
 .post-body {
   font-size: 1rem;
   line-height: 1.8;
+  border-left: 2px solid var(--bg-2);
+  padding: 2rem;
 }
 
 .post-body li,
@@ -345,8 +346,6 @@ body {
 /* ── IMAGES ── */
 .post-body img {
   max-width: 100%;
-  border-radius: 3px;
-  border: 1px solid var(--border);
   display: block;
   margin: 2rem auto;
 }

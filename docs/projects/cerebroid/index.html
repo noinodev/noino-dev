@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:image" content="/assets/images/projects/cerebroid-spider.png">
+<meta property="og:title" content="cerebroid">
+<meta property="og:description" content="first big game project">
+<meta name="twitter:card" content="summary_large_image">
+
+<title>cerebroid — noino technical blog</title>
+<meta name="description" content="first big game project">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav>
+    <div class="site-title">
+      noino technical blog
+    </div>
+    <div class="nav-links">
+      <a href="/">home</a>
+      <a href="/blog">blog</a>
+      <a href="/projects">projects</a>
+      <a href="/about">about</a>
+    </div>
+    <div class="nav-links nav-icons">
+      <a href="https://x.com/noinodev" target="_blank" rel="noopener">
+        <img src="/assets/images/icons/x.png" alt="x" width="16" height="16">
+        x
+      </a>
+      <a href="https://github.com/noinodev" target="_blank" rel="noopener">
+        <img src="/assets/images/icons/github.png" alt="github" width="16" height="16">
+        github
+      </a>
+      <a href="https://discord.gg/xrgdyy8wA8" target="_blank" rel="noopener">
+        <img src="/assets/images/icons/discord.png" alt="discord" width="16" height="16">
+        discord
+      </a>
+    </div>
+  </nav>
+</header>
+
+<main class="content">
+
+<a href="/projects/" class="back-link">projects</a>
+<article>
+  <header class="post-header">
+    <time datetime="2019-01-01">1 January 2019</time>
+    <h1>cerebroid</h1>
+    <div class="post-tags" style="margin-top:0.75rem"><span class="post-tag">gamemaker</span></div>
+  </header>
+  <img src="/assets/images/projects/cerebroid-spider.png" alt="cerebroid" style="width:100%;border-radius:3px;margin-bottom:2rem">
+  <div class="post-body">
+    <h2>cerebroID game</h2>
+<p>I started this game when I was still in highschool and using gamemaker studio 1.4. At the time I was playing a lot of Escape From Tarkov and really enjoyed the weapon customisation and inventory system, so I replicated that in a 2D-sidescrolling game. This game was effectively my first exposure to graphics programming, writing shaders, and managing memory. Even though I achieved a lot with this project, using it as a learning tool also led to it being unfinishable in its current form. I really liked the idea for this game though, so if I had the time I would definitely want to remake it knowing what I know now. :)</p>
+<p><img src=/assets/images/projects/cerebroid-plate.png></p>
+<p>The idea for the game was that you play as a nerd in his basement who missed the AI apocalypse happening right outside his door. The whole world, drunk on these black mirror / neuralink kind of brain devices, is suddenly enslaved by the AI. The game was set to begin with one of these enslaved people, who happens to be a action-hero type of character, stumbling into the filthy basement. The basement is so disgusting that the chip crashes, giving the protagonist the chance to hack into it and interface the action hero in VR through a weird program called &lsquo;CerebroID&rsquo; that suddenly appeared on the computer. From there you play as this awkward dichotomous pair, trying to gather as much computation power as possible (seems very relevant these days) to use CerebroID to stop all the brain chips. Then the basement dweller is forced by necessity to leave the basement right at the end, to save the guy who saved him at the beginning. Really heartwarming stuff and not at all inspired by Neon Genesis Evangelion and the entire loser subgenre around it. Is what I would say if it wasn&rsquo;t written in the notes I took for the game&rsquo;s story. </p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/uoNewUu.mp4" type="video/mp4">
+</video>
+
+<p>Developing this game was kind of my introduction to graphics and systems. The terrain specifically was quite challenging at the time, as I was just learning to manage large amounts of data to be drawn, while also ensuring persistence. I settled on a chunk-based system with a texture for each chunk, which allowed me to subtract individual pixels for granular, satisfying destruction.</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/VA3CNoI.mp4" type="video/mp4">
+</video>
+
+<p>The entire aesthetic and style I actually lifted from a throwaway drawing someone did in the GameMaker discord in 2018 or so. Bloom effects were used in this drawing, which is also why the light effects in this game are simply raster sprites with additive blending. I thought it looked decent at the time. The first real shaders I ever wrote were for the outdoor global lighting, such as the god rays through foliage, and the fade to black in the ground. </p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/IAUnKKW.mp4" type="video/mp4">
+</video>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/7h6nmO6.mp4" type="video/mp4">
+</video>
+
+<p>I would say my two favourite parts of this game were the animations and the item system. The animations were entirely procedural for all characters, so I explored different interpolation methods, inverse kinematics, and other procedural techniques to make the characters look interesting.</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/KGnful5.mp4" type="video/mp4">
+</video>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/zRtMr2a.mp4" type="video/mp4">
+</video>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/9anmX39.mp4" type="video/mp4">
+</video>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/rx8FRzz.mp4" type="video/mp4">
+</video>
+
+<p>The item system, on the other hand, was a lot heavier than it probably needed to be. The idea was for it to be as dynamic as possible, and the hammer tool I knew of at the time was hashmaps. So every item in the level is an entry in a hashmap, potentially containing pointers to other hashmaps. In my multiplayer tests, and in serialisation, this became annoying because I had to convert the pointer to real data, and then into JSON, which was surprisingly difficult to get right (from what I remember). </p>
+<p>All of the weapons, armour, deployable objects, and so on were completely runtime dynamic and loaded through various JSON files, so the item properties were not hardcoded and new ones could be added easily.</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/w2nemD9.mp4" type="video/mp4">
+</video>
+
+<p>I also experimented a LOT in this project. 2D physics, multiplayer, map editors, world layering, enemy AI, the list of things I wanted to add was endless. In hindsight this is what killed the game. The core idea I believe is good, but getting sidetracked on different sub-loops, instead of doing &lsquo;chores&rsquo; of the main game like UI and level design, as well as the overwhelming technical debt that comes from starting a game project when you&rsquo;re in highschool, ultimately sunk any hope of this project being finished,</p>
+<p>Got some cool videos out of it though, and most of all this was the foundation of almost everything I know about graphics today.</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/RzK2IQw.mp4" type="video/mp4">
+</video>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/MPcuqY2.mp4" type="video/mp4">
+</video>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/nGknG55.mp4" type="video/mp4">
+</video>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/LlEVdez.mp4" type="video/mp4">
+</video>
+
+<p>I compiled a 3 minute youtube video of development progress through its life cycle. I basically stopped working on it as soon as I started studying at university. </p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QuWgdgaP8_Y?si=YTXw9O5lOqvlxoDD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<script src="/assets/js/lazy-videos.js"></script>
+  </div>
+</article>
+<div class="post-footer">
+  <a href="/projects/">← projects</a>
+  <span style="font-size:0.75rem;color:var(--text-dimmer)">1 January 2019</span>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <span>noino technical blog</span>
+</footer>
+</body>
+</html>

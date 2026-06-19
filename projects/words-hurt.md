@@ -1,0 +1,23 @@
+---
+title: words hurt!
+date: 2025-06-01
+slug: words-hurt
+tags: [webgl]
+description: funky llm web game about insults
+thumbnail: /assets/images/projects/words-hurt.png
+---
+##Words Hurt!
+
+This little game was born, much like Goblin Tetris, of an almost entirely unrelated university assignment. I am fairly impartial to web programming, so I wanted to stretch my legs with a little WebGL project. The assignment required using the MEAN (MongoDB, ExpressJS, Angular, NodeJS) stack to create a Discord-like chat application. The assignment gave points for creativity, which led me to the trash talk MOBA called Words Hurt!
+
+<blockquote class="twitter-tweet" data-media-max-width="560"><p lang="en" dir="ltr">really ridiculous word game i&#39;m jamming into my uni MEAN stack (slop) assignment<br><br>&#39;Words Hurt!&#39; <br><br>generic chat application hiding a realtime MOBA for trash talk with an LLM judge for scoring and commentary. like internet fight club, or league of legends if it were good. <a href="https://t.co/6GHrltjwr1">pic.twitter.com/6GHrltjwr1</a></p>&mdash; noino🔸 (@noinodev) <a href="https://x.com/noinodev/status/1976354515420164116?ref_src=twsrc%5Etfw">October 9, 2025</a></blockquote> <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script> 
+
+I yoinked all of the art from Goblin Tetris and Group Z. Shamelessly. The core premise is an open-arena free-for-all, where you type insults into the chat, and an LLM will score them by how insulting they are in real-time. The score of your insult then determines how big and how damaging your attack will be, so low-effort insults, or things that aren't insulting at all, deal little damage, while devastating insults deal a lot of damage.
+
+This led to interesting gameplay, where you are trying to type fast while also making sure the insults are good. Because the judging is backed by an LLM hosted on my very own computer, you could also game the LLM to give high rankings to other things. I would say this is a feature and not a bug because you have to think harder to do that, than to type insults. 
+
+The rooms featured an LLM commentator, with a user-defined personality to announce what is happening, make jokes with the insults, and announce game state changes. The scoring criteria itself is also configurable. Instead of insults, a user could redefine the criteria to only give good scores to sailor slang, and commentate in pirate speak. 
+
+Deploying this was quite simple. I had the NodeJS backend talking directly to an open Ollama instance on the same machine, just to keep it simple. Obviously this isn't super secure, but it allowed this prototype to be deployed and played for a few days.
+
+If I were to do this again I would further expand the scoring system to downrank repeated insults, have leaderboards for insult scores, and I want to experiment with a distributed local LLM pool for something like this. Because running multiple instances of the game on just my RTX 2080 won't scale very well, unfortunately. The core loop I would probably change to a Worms-like turn-based thing, to put more emphasis on creative insults, and make it more of a party game than a League of Legends chat simulator. 

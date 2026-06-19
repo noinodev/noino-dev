@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:image" content="/assets/images/projects/groupz-car.png">
+<meta property="og:title" content="group z">
+<meta property="og:description" content="applied c programming and learning real 3d graphics">
+<meta name="twitter:card" content="summary_large_image">
+
+<title>group z — noino technical blog</title>
+<meta name="description" content="applied c programming and learning real 3d graphics">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav>
+    <div class="site-title">
+      noino technical blog
+    </div>
+    <div class="nav-links">
+      <a href="/">home</a>
+      <a href="/blog">blog</a>
+      <a href="/projects">projects</a>
+      <a href="/about">about</a>
+    </div>
+    <div class="nav-links nav-icons">
+      <a href="https://x.com/noinodev" target="_blank" rel="noopener">
+        <img src="/assets/images/icons/x.png" alt="x" width="16" height="16">
+        x
+      </a>
+      <a href="https://github.com/noinodev" target="_blank" rel="noopener">
+        <img src="/assets/images/icons/github.png" alt="github" width="16" height="16">
+        github
+      </a>
+      <a href="https://discord.gg/xrgdyy8wA8" target="_blank" rel="noopener">
+        <img src="/assets/images/icons/discord.png" alt="discord" width="16" height="16">
+        discord
+      </a>
+    </div>
+  </nav>
+</header>
+
+<main class="content">
+
+<a href="/projects/" class="back-link">projects</a>
+<article>
+  <header class="post-header">
+    <time datetime="2023-12-01">1 December 2023</time>
+    <h1>group z</h1>
+    <div class="post-tags" style="margin-top:0.75rem"><span class="post-tag">raylib</span></div>
+  </header>
+  <img src="/assets/images/projects/groupz-car.png" alt="group z" style="width:100%;border-radius:3px;margin-bottom:2rem">
+  <div class="post-body">
+    <h2>Group Z</h2>
+<p>Group B rally racing with (Z)ombies. </p>
+<p><img src=/assets/images/projects/groupz-banner.png></p>
+<h2>Part 1, 2.5D GameMaker Prototype</h2>
+<p>This game was supposed to be a 2-week project I started to get out of a rut in Untitled Space Game. When I was adding enemy vehicles for the space game, I had a thought that the &lsquo;engine&rsquo; I was developing for the isometric style would pair well with the Group Z idea I had kicking around in my head. The goal was to copy the project, gut the alien stuff, add the car stuff, and make a quick racing game. </p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/cMpLFU2.mp4" type="video/mp4">
+</video>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/djCINAm.mp4" type="video/mp4">
+</video>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/R1O2a7F.mp4" type="video/mp4">
+</video>
+
+<p>By the end of the first day I had a working prototype of a zombie-smashing racing game. I was well on track to achieve this within a few weeks, but as I was working on this while also in the throes of learning C at university, I was coming to very quickly outgrow both the 2D environment from a graphics perspective, and GameMaker from an engineering perspective. I also added out of car mechanics as a gameplay feature. It&rsquo;s not relevant to the point I&rsquo;m making I just wanted to post the clip.</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/MVvMyOQ.mp4" type="video/mp4">
+</video>
+
+<p>Before I moved away from this version, I was making great progress in shader writing, where I developed a fake perspective projection for the 2.5D isometric environment. This made the racing mechanics much more fluid, but it only really scaled to the terrain which was kind of janky looking at high elevations.</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/Mbt0GoC.mp4" type="video/mp4">
+</video>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/HtNS1MP.mp4" type="video/mp4">
+</video>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/5lNYnDb.mp4" type="video/mp4">
+</video>
+
+<p>The game also wasn&rsquo;t &lsquo;technically&rsquo; 3d, meaning depth testing was extremely cursed, especially for any of the upright characters and items. Because they are just 2D sprites and not drawn in 3D space, correct depth testing is nearly impossible. This was the last clip I ever posted of this version of the game.</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/wQOkbmH.mp4" type="video/mp4">
+</video>
+
+<h2>Part 2, 3D GameMaker Prototype</h2>
+<p>After getting exhausted with mixing plain 2D drawing with 3D elements and trying to depth test between them, I decided to learn 3D properly to create Group Z from scratch. I had to swallow my pride and follow some tutorials for basic setup because loading .obj models in GameMaker Studio 1.4 is an absolute nightmare it turns out. </p>
+<p>GameMaker has effectively no native 3D utilities, so I had to learn everything from scratch. I understoof how vertex buffers worked, and I wanted to start from a sprite batching system to overcome the sprite drawing nightmare of the 2.5D version. I then yoinked the driving code from the original, the tree sprites from CerebroID, and then there was a basic driving game in my first ever true 3D environment.</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/Nbp9ZbT.mp4" type="video/mp4">
+</video>
+
+<p>The next task was shadow mapping. In my 2.5D engines, shadows were always very awkward because there is no obvious way to do real shadows, so I was excited to learn how 3D games achieve it. Unfortunately GameMaker Studio 1.4 is OpenGL ES2 based, which makes shadow mapping very complicated for lack of non-UNORM textures. Thankfully there is a good tutorial for packing a 32-bit depth value into the 4 8-bit components, and with that I quickly figured out shadow mapping. </p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/lj8Ci1C.mp4" type="video/mp4">
+</video>
+
+<p>Funnily enough this version of GameMaker had absolutely no primitives for orthographic projection, and I didn&rsquo;t understand 3D well enough yet, so I was actually using a perspective projection matrix for the shadow map. It worked okay but it&rsquo;s funny to look back on.</p>
+<p>I then worked on some more effects. A stencil-based water texture similar to the one I used in my previous engines, PCF soft shadows, and a terrain LOD system to improve performance</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/4PsB9sk.mp4" type="video/mp4">
+</video>
+
+<p>Then I got into reflections for the water, and rediscovered planar reflections from first principles because I didn&rsquo;t know what that was yet. I thought it was quite convincing though, and really rounded off the stencil-based water I had developed. </p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/xov4fMf.mp4" type="video/mp4">
+</video>
+
+<p>However, I was learning way too fast. This two week project became a one-year-long on-and-off learning experience, where by the end of it I had outgrown GameMaker completely. I decided it was time to try a making a game in a real programming language, with a real graphics library.</p>
+<h2>Part 3, 3D raylib prototype</h2>
+<p>It took some deliberation to decide what graphics library to use for this. My C programming was getting quite good, having done a multithreaded HTTP server, data structures and algorithms, and a heap of other coursework with it. For the graphics library I wanted to use, I was deliberating between a few options, but settled on raylib because it is unbelievably easy to use. Within the first few hours, I had integrated Open Dynamics Engine for a small physics sandbox, complete with terrain and directional lighting.</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/do7IPyH.mp4" type="video/mp4">
+</video>
+
+<p>I wanted this to be the &lsquo;production&rsquo; attempt at making Group Z. The two-week throwaway project is now in its second year of production, but through this I grew to deeply understand computer graphics. </p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/yNd5H7x.mp4" type="video/mp4">
+</video>
+
+<p>I worked back through shadow mapping, GPU mesh instancing, chunk LODs with multithreaded mesh generation and streaming with real-time updates, a particle system and some really nice driving physics through Open Dynamics Engine.</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/TQhcsCO.mp4" type="video/mp4">
+</video>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/jrr2gZ5.mp4" type="video/mp4">
+</video>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/4iXFmuc.mp4" type="video/mp4">
+</video>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/ArYnw3w.mp4" type="video/mp4">
+</video>
+
+<p>And then, naturally, I decided to throw most of it out in favour of a new technique that clicked in my brain. Deferred rendering. Once the renderer was working again, I set out to achieve volumetric fog / shadows (for some reason I cannot remember)</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/9bv4PUG.mp4" type="video/mp4">
+</video>
+
+<p>It was at this point that the graphics concepts people often talk about, like ray marching, were really starting to make sense. On the back of this I also worked through screen space reflections, using my new and shiny G-buffer. My normals were totally messed up for the most part though, so it was a little busted. Regardless it was fun to do!</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/fPpin8v.mp4" type="video/mp4">
+</video>
+
+<p>Shortly after I added translucent shadows through dithering, covered by soft-shadow filtering for a nice (volumetric!) cloud shadow effect.</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/cj7rISu.mp4" type="video/mp4">
+</video>
+
+<p>After that (the same day) I worked on a simple material system, with diffuse, normal, specular and emissive maps for the various meshes, including tiles. With this I added lights to the car, and little shiny spots to the gravel texture.</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/mpwRbLQmp4" type="video/mp4">
+</video>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/UbIYD0W.mp4" type="video/mp4">
+</video>
+
+<p>The final state of this version of the renderer was pretty nice looking, but performance left something to be desired. Specifically, the amount of terrain, grass and trees being drawn was hogging basically the entire frame budget.</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/gSzdi1y.mp4" type="video/mp4">
+</video>
+
+<p>It was at this point that I first identified how inefficient the instanced rendering functions in raylib were. I tried a few techniques to improve performance, like staggering foliage transform uploads over time with frustum culling and better chunk-distance LODs. </p>
+<p>After that I set out to add water, using similar methods to the original GameMaker version to get interactive ripples. I use a standard framebuffer to draw ripple particles to both shift surface normals and displace vertices in a clipmap-like water mesh.</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/LgegGGL.mp4" type="video/mp4">
+</video>
+
+<p>My understanding of PBR materials and the BRDF generally wasn&rsquo;t that good at the time, so basically everything in this renderer had the plastic specular sheen. It makes the water look interesting, but if I were to do it again I could and would do it much better.</p>
+<p>The next task was vehicle deformation. I used a simple analytical solution for this, attached to rendering of the vehicle mesh directly. I would use a finite set of <code>vec4</code>s in a uniform buffer, representing a position and radius, that would deform and skew the mesh. These were generated by calculating collision force from the physics engine. The math was not quite airtight but as a simple prototype the deformation was quite effective.</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/UCuzm85.mp4" type="video/mp4">
+</video>
+
+<p>Following this I worked toward some real public-facing content for the game, starting with a <a href="https://noino.dev/posts/raylib-shadows/">simple guide for shadow mapping in raylib</a>.  </p>
+<p>The last clip I ever posted of this renderer was to show off some space partitioning techniques I added, improving performance again.</p>
+<video class="lazy-video" controls autoplay muted loop playsinline width="540" preload="none">
+  <source src="https://imgur.com/yansL5d.mp4" type="video/mp4">
+</video>
+
+<h2>Part 4, ???</h2>
+<p>Even though I have already gone through three renderers across two years for this game, I have learned enough about graphics and rendering that starting from scratch once again would probably be easier than decoding the spaghetti of another learning project.</p>
+<p>I have a lot more experience in 3D graphics now, having learned a lot from this project and the several other projects since, I think I could do justice for the 2-week zombie racing game idea from late 2023.</p>
+<p>Maybe its something I&rsquo;ll try when my final year of university is closer to finishing. :)</p>
+<script src="/assets/js/lazy-videos.js"></script>
+  </div>
+</article>
+<div class="post-footer">
+  <a href="/projects/">← projects</a>
+  <span style="font-size:0.75rem;color:var(--text-dimmer)">1 December 2023</span>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <span>noino technical blog</span>
+</footer>
+</body>
+</html>

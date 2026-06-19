@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:image" content="/assets/images/projects/tanksim.png">
+<meta property="og:title" content="tank combat simulator">
+<meta property="og:description" content="ros noetic tank combat simulator and clients">
+<meta name="twitter:card" content="summary_large_image">
+
+<title>tank combat simulator — noino technical blog</title>
+<meta name="description" content="ros noetic tank combat simulator and clients">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav>
+    <div class="site-title">
+      noino technical blog
+    </div>
+    <div class="nav-links">
+      <a href="/">home</a>
+      <a href="/blog">blog</a>
+      <a href="/projects">projects</a>
+      <a href="/about">about</a>
+    </div>
+    <div class="nav-links nav-icons">
+      <a href="https://x.com/noinodev" target="_blank" rel="noopener">
+        <img src="/assets/images/icons/x.png" alt="x" width="16" height="16">
+        x
+      </a>
+      <a href="https://github.com/noinodev" target="_blank" rel="noopener">
+        <img src="/assets/images/icons/github.png" alt="github" width="16" height="16">
+        github
+      </a>
+      <a href="https://discord.gg/xrgdyy8wA8" target="_blank" rel="noopener">
+        <img src="/assets/images/icons/discord.png" alt="discord" width="16" height="16">
+        discord
+      </a>
+    </div>
+  </nav>
+</header>
+
+<main class="content">
+
+<a href="/projects/" class="back-link">projects</a>
+<article>
+  <header class="post-header">
+    <time datetime="2025-03-01">1 March 2025</time>
+    <h1>tank combat simulator</h1>
+    <div class="post-tags" style="margin-top:0.75rem"><span class="post-tag">raylib</span></div>
+  </header>
+  <img src="/assets/images/projects/tanksim.png" alt="tank combat simulator" style="width:100%;border-radius:3px;margin-bottom:2rem">
+  <div class="post-body">
+    <h2>Tank Combat Simulator</h2>
+<p><a href=https://github.com/noinodev/ros-tanksim>github repository</a></p>
+<p>This project was a very fast prototype of a multi-agent robotics simulation for a 3rd-year course. We were required to use ROS Noetic, which is very old, and had no windows support at all. Just for this project, I actually bought a (very terrible) laptop and installed bare-metal Linux for the first time. Xubuntu 20.04 specifically. It&rsquo;s an AMD 3020e Lenovo IdeaPad, and it was so bad that even the lightest distro google gave to me was still way too slow. I do not know why these things even come preloaded with windows it was completely unusable. </p>
+<p>I do not have access to the toolchain to run the program anymore, so I have very little footage of it working. The basic idea was two parts. S raylib + ODE based simulation engine, with a ROS Noetic interface for multi-agent sensor and actuator subscription through dynamic runtime namespaces. </p>
+<p>The requirements of the assignment were to use a high-level motion planning library called PAT, and the Gazebo simulator, but I chose a custom engine for two reasons: this stack cannot actually do the multi-agent simulation we needed, and I was very stubborn and wanted to stretch my legs a bit. I was coming off a high of a data structures and algorithms course, where I wrote some nasty data structures in C, so stepping back down to a raylib+ODe pair was actually a breath of fresh air. </p>
+<p>THe simulator came together very quickly. Tank agents could be added and namespaced, with a real-time sensor protocol for GPS, gyro and spinning LIDAR. I then wrote a ROS client to interface with the engine, where multiple individual instances could control an individual agent in the simulator. </p>
+<p>The engine itself was backed by a custom Entity-Component system, which allowed runtime composition of robots and hierarchical parts for them. For example, the tank body and turret are separate entities entirely, linked through a parenting system of the ECS. Individual sensors are each components that can be attached to an entity, and everything is automatically passed through the interface in real-time.</p>
+<p>The navigation stack used is a hybrid between Vector Field Histogram (VFH), which is a fancy way of saying how far away each angular bin of a spinning LIDAR system is, Reactive Potential Field (RPF), which calculates a &lsquo;pushing&rsquo; force from the VFH to avoid flat surfaces and prefer flat terrain.</p>
+<p>Then finally global pathing is calculated through A*, where the terrain heightfield is reconstructed from LIDAR data through a SLAM-lite method. Linear and angular PID are also used for acceleration and differential steering.</p>
+<p>These combined methods enable real-time navigation of completely unknown environments, including uneven terrain, through effective tuning of these techniques. There were further planned features, such as team-combat dynamics and objectives, but I ran out of time for the assignment. </p>
+<p>Overall it was a great learning experience, especially for navigation algorithms, spatial partitioning, learning spatial transforms like quaternions, asynchronous systems and parallelism, and much more. </p>
+<p>If I were to start this again I probably would aim for a more parallelised or distributed architecture, and a more &lsquo;real-world&rsquo; sensor protocol to possibly analogue real devices. In terms of agent control, exploring reinforcement learning has been a long-term goal of mine. Libraries like Pufferlib would be great for that, because the environment models are raylib-based, and I may be able to make something interesting from that.</p>
+<p>Anyway here is a really awful clip I took. It&rsquo;s not perfect because the tanks are told to navigate to a random point, and when its unreachable it just drives into the wall. The angular PID is also kind of fiddly so sometimes it prefers to drive backwards.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uQ2flGaD-WY?si=o-8P2GL3isB0fptH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+</article>
+<div class="post-footer">
+  <a href="/projects/">← projects</a>
+  <span style="font-size:0.75rem;color:var(--text-dimmer)">1 March 2025</span>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <span>noino technical blog</span>
+</footer>
+</body>
+</html>
