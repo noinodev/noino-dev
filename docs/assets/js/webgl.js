@@ -107,7 +107,7 @@ if(!window.glInitialized) {
         return tex;
     };
 
-    const cubemap = loadCubemap('/assets/images/pan'); // folder with posx.png etc.
+    //const cubemap = loadCubemap('/assets/images/pan'); // folder with posx.png etc.
 
     // math helpers
     const perspective = (fov, aspect, near, far) => {
@@ -154,7 +154,7 @@ if(!window.glInitialized) {
         gl.uniformMatrix4fv(mvLoc, false, mv);
 
         gl.activeTexture(gl.TEXTURE0);
-        gl.bindTexture(gl.TEXTURE_CUBE_MAP, cubemap);
+        //gl.bindTexture(gl.TEXTURE_CUBE_MAP, cubemap);
         gl.uniform1i(skyLoc, 0);
 
         gl.drawElements(gl.TRIANGLES, 36, gl.UNSIGNED_SHORT, 0);
