@@ -92,6 +92,7 @@ body {
 
 /* ── MAIN CONTENT ── */
 .content {
+  background-color: var(--bg);
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 4rem 2rem 6rem;
