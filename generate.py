@@ -190,11 +190,9 @@ def build_list(items, url_prefix, tag_filter=None):
       {thumb_html}
       <div class="post-info">
         <span class="post-title">{item['title']}</span>
-        <span class="post-meta-line">
             <span class="post-date">{item['description']}</span>
             {tag_html}
             <span class="post-date">{date_display(item['date'])}</span>
-        </span>
       </div>
     </a>
   </li>"""
