@@ -151,6 +151,7 @@ def generate_tree(items, tree, template):
   <header class="post-header">
     <time datetime="{date_machine(item['date'])}">{date_display(item['date'])}</time>
     <h1>{item['title']}</h1>
+    <h3>{item['description']}</h3>
     {f'<div class="post-tags" style="margin-top:0.75rem">{tags_html}</div>' if tags_html else ''}
   </header>
   {thumb_html}
