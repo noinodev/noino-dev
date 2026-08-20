@@ -26,7 +26,7 @@ html {
 }
 
 body {
-  background: var(--bg);
+  /*background: var(--bg);*/
   color: var(--text);
   font-family: var(--font-mono);
   font-weight: 300;
