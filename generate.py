@@ -181,7 +181,7 @@ def build_list(items, url_prefix, tag_filter=None):
         return '<p style="color:var(--text-dim)">nothing here yet.</p>'
     rows = ""
     for item in filtered:
-        tag_html   = f'<span class="post-tag">{item["tags"][0]}</span>' if item["tags"] else ""
+        tag_html   = f'<span class="post-tag">{" ".join(item["tags"])}</span>' if item["tags"] else ""
         thumb_html = f'<img src="{item["thumbnail"]}" alt="{item["title"]}">' if item["thumbnail"] else '<div class="post-thumb-placeholder"></div>'
         rows += f"""
   <li>
@@ -189,10 +189,9 @@ def build_list(items, url_prefix, tag_filter=None):
       {thumb_html}
       <div class="post-info">
         <span class="post-title">{item['title']}</span>
-        <span class="post-date">{item['description']}</span
         <span class="post-meta-line">
+          <span class="post-date">{item['description']} - {date_display(item['date'])}</span>
           {tag_html}
-          <span class="post-date">{date_display(item['date'])}</span>
         </span>
       </div>
     </a>
